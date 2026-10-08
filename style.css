@@ -1,0 +1,172 @@
+/* ==========================================================
+   Library Game PC - Tema Steam
+   Brand color : #66c0f4 (biru Steam)
+   Background  : #1b2838 (utama) dan #171a21 (navbar/card)
+   ========================================================== */
+
+/* ---------- Variabel warna ---------- */
+:root {
+    --brand: #66c0f4;            /* Syarat 1 Warna Brand Konsisten */
+    --brand-dark: #417a9b;
+    --bg-main: #1b2838;
+    --bg-dark: #171a21;
+    --bg-card: #16202d;
+    --text-main: #c7d5e0;
+    --text-muted: #8f98a0;
+}
+
+/* ---------- Reset & dasar ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Motiva Sans", "Segoe UI", Tahoma, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+/* ---------- Navbar ---------- */
+/* Syarat Flexbox: navbar memakai display: flex */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 32px;
+    background-color: var(--bg-dark);
+    border-bottom: 2px solid var(--brand);          /* Syarat Brand Color */
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.navbar h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--brand);                            /* Syarat Brand Color */
+}
+
+.navbar .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* ---------- Container utama ---------- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+.page-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 4px solid var(--brand);            /* Syarat Brand Color */
+}
+
+/* ---------- Layout daftar card ---------- */
+/* Syarat Flexbox: container card memakai flex + flex-wrap */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+/* ---------- Card ---------- */
+/* Syarat Box Model: padding, border, box-shadow, margin */
+.card {
+    flex: 1 1 calc(33.333% - 24px);   /* 3 kolom di desktop */
+    max-width: calc(33.333% - 16px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;                                  /* Syarat Box Model: padding */
+    border: 1px solid #2a475e;                      /* Syarat Box Model: border */
+    border-radius: 4px;
+    background: linear-gradient(180deg, #1f3347 0%, var(--bg-card) 100%);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);     /* Syarat Box Model: box-shadow */
+    margin-bottom: 8px;                             /* Syarat Box Model: margin */
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand);                     /* Syarat Brand Color: hover */
+    box-shadow: 0 10px 24px rgba(102, 192, 244, 0.25);
+}
+
+.game-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a475e;
+}
+
+.game-developer {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.game-developer strong,
+.game-genre strong {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 2px;
+    background-color: rgba(102, 192, 244, 0.15);
+    color: var(--brand);                            /* Syarat Brand Color */
+    border: 1px solid var(--brand-dark);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.game-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: auto;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px) {
+    .card {
+        flex: 1 1 calc(50% - 24px);                 /* 2 kolom */
+        max-width: calc(50% - 12px);
+    }
+}
+
+/* ---------- Mobile ---------- */
+/* Syarat Responsif: media query max-width 768px */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 14px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .container {
+        padding: 20px 16px;
+    }
+
+    .card-container {
+        flex-direction: column;                     /* 1 kolom di mobile */
+    }
+
+    .card {
+        flex: 1 1 100%;
+        max-width: 100%;                            /* lebar penuh */
+        width: 100%;
+    }
+}
